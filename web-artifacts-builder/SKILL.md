@@ -1,12 +1,12 @@
 ---
 name: web-artifacts-builder
-description: Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.
+description: Suite of tools for creating elaborate, multi-component Codex CLI HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.
 license: Complete terms in LICENSE.txt
 ---
 
 # Web Artifacts Builder
 
-To build powerful frontend claude.ai artifacts, follow these steps:
+To build powerful frontend Codex artifacts, follow these steps:
 1. Initialize the frontend repo using `scripts/init-artifact.sh`
 2. Develop your artifact by editing the generated code
 3. Bundle all code into a single HTML file using `scripts/bundle-artifact.sh`
@@ -44,24 +44,24 @@ To build the artifact, edit the generated files. See **Common Development Tasks*
 
 ### Step 3: Bundle to Single HTML File
 
-To bundle the React app into a single HTML artifact:
+ReactコンポーネントをCodexで共有できる単一HTMLにまとめるには、プロジェクト直下で次を実行します（例: `./scripts/bundle-artifact.sh`）:
 ```bash
 bash scripts/bundle-artifact.sh
 ```
 
-This creates `bundle.html` - a self-contained artifact with all JavaScript, CSS, and dependencies inlined. This file can be directly shared in Claude conversations as an artifact.
+これで `bundle.html` が生成され、JS/CSS/アセットがすべてインライン化された1ファイルになります。`bundle.html` を Codex チャットに添付すれば、そのまま実行可能なアーティファクトとして共有できます。
 
-**Requirements**: Your project must have an `index.html` in the root directory.
+**Requirements**: プロジェクト直下に `index.html` があること。
 
 **What the script does**:
-- Installs bundling dependencies (parcel, @parcel/config-default, parcel-resolver-tspaths, html-inline)
-- Creates `.parcelrc` config with path alias support
-- Builds with Parcel (no source maps)
-- Inlines all assets into single HTML using html-inline
+- bundling依存 (parcel, @parcel/config-default, parcel-resolver-tspaths, html-inline) を導入
+- `.parcelrc` を生成してパスエイリアス対応
+- Parcelでビルド（source mapなし）
+- `html-inline` で dist/index.html を1ファイル化 (`bundle.html` 出力)
 
 ### Step 4: Share Artifact with User
 
-Finally, share the bundled HTML file in conversation with the user so they can view it as an artifact.
+生成された `bundle.html` を Codex で提示・添付すれば、追加のビルドや依存インストールなしでそのまま開けます。
 
 ### Step 5: Testing/Visualizing the Artifact (Optional)
 
