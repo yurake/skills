@@ -24,8 +24,11 @@ description: >
    - Scope: allowed files/dirs, banned actions, time/complexity constraints.
    - Context: minimal code snippets/diffs needed to answer; avoid oversharing.
 2) Invoke claude_code with a structured prompt (see templates below).
+   - タイムアウトしたら1回リトライ。成功しない場合はユーザーへ報告。
 3) Receive and digest
-   - Summarize response in 2–3 bullets; decide: adopt / partial / discard.
+   - Summarize response in 2–3 bullets。
+   - MUST: 返答内容を自分の結論・回答に反映する。統合しない場合は理由を明記。
+   - Decide: adopt / partial / discard.
    - If edits returned, review diff → apply → run relevant checks/tests if riskful.
 4) Follow-up if needed
    - Ask to narrow to one option, or request a patch limited to specific paths.
@@ -42,6 +45,7 @@ description: >
 - Always state allowed paths and banned actions before asking for edits.
 - Prefer getting reasoning or options first; request patches only after scoping.
 - Verify diffs yourself; run focused tests when behavior can change.
+- タイムアウト時は1回リトライし、成功した返答は必ず要約して結論に反映。統合しない場合は理由を明示。リトライ失敗時はユーザーへ報告。
 
 ## References
 - Prompt examples: `references/prompts.md`
