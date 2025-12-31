@@ -8,7 +8,7 @@ description: あらゆる言語/スタックで潜在バグリスクを洗い出
 短時間でリスク洗い出しと追加テスト案を出すための手順。全言語/フレームワーク共通で使える。
 
 ## 使い方（アウトプットフォーマット）
-- **Risk list**: `- [severity] area (file:sline optional) — risk description / why it matters`
+- **Risk list**: `- [severity 🔴/🟡/🟢] area (file:sline optional) — risk description / why it matters` （重大度は文字だけでなく色付きの丸も併記）
 - **Tests to add**: `- type (unit/integration/e2e/property) — scenario — expected assertion or oracle`
 - 短く、重要度順に並べる。推測が含まれる場合は「assume: ...」と明記。
 
